@@ -1,0 +1,5 @@
+ロジック
+/Users/hy/Portfolio/scmbranch/oshieteSCM/
+
+reduxの構造
+/Users/hy/Portfolio/react_typescript/userappredux

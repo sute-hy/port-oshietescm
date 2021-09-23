@@ -1,0 +1,24 @@
+{
+  "quiz": [
+    {
+      "id":1,
+      "question": "What is A?",
+      "choice": ["A0","A1","A2"]
+    },
+    {
+      "id":2,
+      "question": "What is B?",
+      "choice": ["B0","B1","B2"]
+    },
+    {
+      "id":3,
+      "question": "What is C?",
+      "choice": ["C0","C1","C2"]
+    },
+    {
+      "id":4,
+      "question": "What is D?",
+      "choice": ["D0","D1","D2"]
+    }
+  ]
+}
