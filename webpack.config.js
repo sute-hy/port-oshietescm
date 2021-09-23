@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/components/App.tsx',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
