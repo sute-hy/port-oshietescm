@@ -1,16 +1,7 @@
+import { ClassNames } from "@emotion/react";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-
-
-// export const ChoiceButton = () => {
-//   return(
-//     <>
-//       <Choice />
-//       <Choice />
-//       <Choice />
-//     </>
-//   )
-// }
+import { useStyles } from "../../theme/useStyle";
 
 // 選択肢用のボタン
 export const ChoiceButton = () => {
@@ -19,6 +10,7 @@ export const ChoiceButton = () => {
       <Button 
       size="large" 
       fullWidth
+      variant="outlined"
       >
       選択肢
       </Button>
@@ -35,6 +27,7 @@ export const ModeButton = () => {
         component={Link}
         to="/quiz"
         fullWidth
+        variant="outlined"
       >
         X問
       </Button>

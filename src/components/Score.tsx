@@ -1,4 +1,7 @@
+import { useStyles } from "../theme/useStyle";
+
 export const Score = () => {
+  const classes = useStyles();
   return(
     <>
     <h1>結果</h1>
