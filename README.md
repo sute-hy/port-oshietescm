@@ -1,4 +1,3 @@
-GIF
 
 <h2>About This App:</h2><br />
 サプライチェーンマネジメント(SCM)用語の、一問一答webサービス 初期デモver<br />
