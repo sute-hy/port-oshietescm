@@ -1,7 +1,6 @@
 import { Start } from "../components/Start";
 import { Mode } from "../components/Mode";
 import { Quiz } from "../components/Quiz";
-import { Score } from "../components/Score";
 import { Header } from "../components/common/Header";
 import{ BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
@@ -29,20 +28,8 @@ export const Routes = () => {
             >
             <Quiz />
             </Route>
-            <Route
-            exact
-            path="/score"
-            >
-            <Score />
-            </Route>
           </Switch>
       </Router>
     </>
   );
 }
-        // <Route
-        // exact
-        // path="/XXX"
-        // >
-        // <Xxx />
-        // </Route>

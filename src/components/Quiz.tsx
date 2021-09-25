@@ -1,15 +1,10 @@
-import { ChoiceButton } from "./common/Button"
-
+import PaginationControlled from "./common/Pagination";
+import { useStyles } from "../theme/useStyle";
 
 export const Quiz = () => {
   return(
     <>
-    <h1>問題文</h1>
-    <ChoiceButton />
-    <ChoiceButton />
-    <ChoiceButton />
-    <p>前の問題へ</p>
-    <p>次の問題へ</p>
+    <PaginationControlled />
     </>
   )
 };
