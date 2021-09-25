@@ -16,6 +16,7 @@ export interface quiz {
   choice: string[]
 }
 
+
 export default function PaginationControlled() {
   const classes = useStyles();
   //Paginationの中央揃えのために、上位構造のスタイルを変更する
@@ -34,6 +35,7 @@ export default function PaginationControlled() {
   //問題と選択肢を配列に格納（番号で対応）
   const questionList: string[] = new Array();
   const choiceList: string[][] = new Array();
+  let handlechoiceList: string[] = new Array(); 
   quizList.forEach((item:quiz) => {
     //問題を格納
     questionList.push(item.question);
@@ -41,11 +43,17 @@ export default function PaginationControlled() {
     choiceList.push(item.choice);
   });
 
-  // 選択肢をシャッフル
-  // 実装は後回し
-
-  //状態は後にreduxを導入して管理 現在のページ
-  const [page, setPage] = React.useState(1);
+  // 選択肢をシャッフル 実装は後回し
+  //現在のページ
+  const [page, setPage] = useState(1);
+  handlechoiceList = choiceList[page-1]
+  //undefined時の 'cannot read property of undefined' 対策
+  if (handlechoiceList === undefined){
+    handlechoiceList = ["Nodata","Nodata","Nodata"]
+  };
+  let choice1: string = handlechoiceList[0];
+  let choice2: string = handlechoiceList[1];
+  let choice3: string = handlechoiceList[2];
 
   //問題の数
   //Pageの管理
@@ -59,16 +67,14 @@ export default function PaginationControlled() {
       <Typography variant="h5">
       <br />
         {questionList[page-1]}
-        {/* {choiceList[page-1][1]}
-        {choiceList[page-1][2]}
-        {choiceList[page-1][3]} */}
       </Typography>
       <br />
       <Typography className={classes.right}>{page}問目 / {quizList.length}問 </Typography>
         <div className={classes.centerbutton}>
           <Stack spacing={2}>
-            {/* {/* <ChoiceButton choice= {choiceList[page-1][2]}/> */}
-            {/* <ChoiceButton choice= {choiceList[page-1][3]}/> */}
+            <ChoiceButton choiceValue= {choice1} />
+            <ChoiceButton choiceValue= {choice2} />
+            <ChoiceButton choiceValue= {choice3} />
           </Stack>
         </div>
       <div className={classes.center} >

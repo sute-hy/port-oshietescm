@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useStyles } from "../../theme/useStyle";
 
 // 選択肢用のボタン
-export const ChoiceButton = (choice:any) => {
+export const ChoiceButton = (choice: { choiceValue: string; }) => {
   return(
     <>
       <Button 
@@ -12,7 +12,7 @@ export const ChoiceButton = (choice:any) => {
       fullWidth
       variant="outlined"
       >
-      choice
+        {choice.choiceValue}
       </Button>
     </>
   );
