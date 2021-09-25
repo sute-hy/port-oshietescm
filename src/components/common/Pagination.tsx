@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { Typography } from '@material-ui/core';
-import  Pagination  from '@mui/material/Pagination';
-import { Stack } from '@mui/material';
-import { ChoiceButton } from './Button';
+import { Box, Button, Modal, Typography } from '@material-ui/core';
+import { fabClasses, Stack } from '@mui/material';
 import { useStyles } from '../../theme/useStyle';
 import MuiPagination from '@material-ui/lab/Pagination';
 import { withStyles } from '@material-ui/core/styles';
 import { QuizList } from '../QuizList';
-import { shuffleQuizorder } from './Shuffle';
 import { useState } from 'react';
 
 export interface quiz {
@@ -15,7 +12,6 @@ export interface quiz {
   question: string,
   choice: string[]
 }
-
 
 export default function PaginationControlled() {
   const classes = useStyles();
@@ -26,12 +22,11 @@ export default function PaginationControlled() {
     },
   })(MuiPagination);
   const quizList: quiz[] = QuizList();
-
-  // シャッフルの実装は後回し
-  // useEffectの返り値問題と、usestateの２次元配列処理が課題
-  // API側での実装も視野にいれる
-  // const shuffledquizList = shuffleQuizorder(quizList);
-
+  //現在のページ管理用
+  const [page, setPage] = useState(1);
+  //正解フラグ
+  const [isCorrect, setCorrect] =useState(true);
+  
   //問題と選択肢を配列に格納（番号で対応）
   const questionList: string[] = new Array();
   const choiceList: string[][] = new Array();
@@ -43,23 +38,43 @@ export default function PaginationControlled() {
     choiceList.push(item.choice);
   });
 
-  // 選択肢をシャッフル 実装は後回し
-  //現在のページ
-  const [page, setPage] = useState(1);
   handlechoiceList = choiceList[page-1]
   //undefined時の 'cannot read property of undefined' 対策
   if (handlechoiceList === undefined){
     handlechoiceList = ["Nodata","Nodata","Nodata"]
   };
+
+  // //選択肢をシャッフル
+  // for(let i = handlechoiceList.length-1; i > 0; i--){
+  //   const j = Math.floor(Math.random() * (i + 1));
+  //   [handlechoiceList[j],handlechoiceList[i]] = [handlechoiceList[i], handlechoiceList[j]];      
+  // }
+  //選択肢表示用の変数
   let choice1: string = handlechoiceList[0];
   let choice2: string = handlechoiceList[1];
   let choice3: string = handlechoiceList[2];
 
-  //問題の数
   //Pageの管理
   const handleChange = (event: React.ChangeEvent<unknown>, value: number|null) => {
     if (!value) {return};
     setPage(value);
+  };
+
+  //モーダル関係
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #E6FFE9',
+    boxShadow: 24,
+    p: 4,
+    color: '#000000'
   };
 
   return (
@@ -69,18 +84,60 @@ export default function PaginationControlled() {
         {questionList[page-1]}
       </Typography>
       <br />
-      <Typography className={classes.right}>{page}問目 / {quizList.length}問 </Typography>
+      <Typography className={classes.right}>
+        {page}問目 / {quizList.length}問 
+      </Typography>
+      <br />
+      <Typography variant="h6" align='center'>
+        質問の答えを選択肢から選んでね
+      </Typography>
+      <br />
+      <div>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
+            { isCorrect ? "正解！！":"残念！間違い！"}
+            </Typography>
+          </Box>
+        </Modal>
+      </div>
         <div className={classes.centerbutton}>
-          <Stack spacing={2}>
-            <ChoiceButton choiceValue= {choice1} />
-            <ChoiceButton choiceValue= {choice2} />
-            <ChoiceButton choiceValue= {choice3} />
+          <Stack spacing={3}>
+            <Button 
+              size="large" 
+              fullWidth
+              variant="outlined"
+              onClick={handleOpen}          
+              >
+              <Typography>
+              {choice1}
+              </Typography>
+            </Button>
+            <Button 
+              size="large" 
+              fullWidth
+              variant="outlined"
+              >
+              {choice2}
+            </Button>
+            <Button 
+              size="large" 
+              fullWidth
+              variant="outlined"
+              >
+              {choice3}
+            </Button>
           </Stack>
         </div>
-      <div className={classes.center} >
-        <br/>
-        <Pagination count={quizList.length} page={page} onChange={handleChange} />
-      </div>
+        <div className={classes.center} >
+          <br/>
+          <Pagination count={quizList.length} page={page} onChange={handleChange} />
+        </div>
     </>
   );
 }

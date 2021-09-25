@@ -1,7 +1,6 @@
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useStyles } from "../../theme/useStyle";
-import { commonColors } from "../../theme/colors";
 
 export const Header = () => {
   const classes = useStyles();
@@ -12,7 +11,7 @@ export const Header = () => {
             <img src={'./logocopy.png'} alt="logo" />
           </Link>
           <Typography variant="h6">
-              Learning SupplyChain Management
+              Learning SupplyChain Management ver.Demo
           </Typography>
       </Toolbar>
     </AppBar>

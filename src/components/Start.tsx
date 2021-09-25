@@ -9,12 +9,12 @@ export const Start = () => {
     <>
     <Typography variant="h3" align='center'>
       <br />
-      おしえて！SCM
-    </Typography>
-    <Typography variant="h4" align='center'>
       SCM用語クイズ
     </Typography>
     <br />
+    <div className={classes.center}>
+    <img src={'./logo250.png'} alt="logo" />
+    </div>
     <div className={classes.centerbutton}>
     <Button 
       size="large"

@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import { commonColors } from "./colors";
 
 export const useStyles = makeStyles((theme) => ({
   primarycolor: {

@@ -9,14 +9,14 @@ export const Mode = () => {
     <>
     <Typography variant="h4" align='center'>
     <br />
-    問題数を選択してね
+    難易度を選択してね
     </Typography>
     <br />
     <div className={classes.centerbutton}>
     <Stack spacing={1}>
-      <ModeButton />
-      <ModeButton />
-      <ModeButton />
+      <ModeButton modeValue= "かんたん"/>
+      <ModeButton modeValue= "ふつう"/>
+      <ModeButton modeValue= "むずかしい"/>
     </Stack >
     </div>
     </>
