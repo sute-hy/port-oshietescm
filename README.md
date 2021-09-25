@@ -1,6 +1,6 @@
 GIF
 
-About This App:
+About This App:<br />
 サプライチェーンマネジメント(SCM)用語の、一問一答webサービス 初期デモver
 がんばる社会人に貢献する学習アプリ（となる予定）
 
