@@ -1,8 +1,10 @@
 
 <h2>About This App:</h2><br />
 サプライチェーンマネジメント(SCM)用語の、一問一答webサービス 初期デモver<br />
-がんばる社会人に貢献する学習アプリ（となる予定）
+がんばる社会人に貢献する学習アプリ
 <br />
+デモ：
+https://www.youtube.com/watch?v=mF2xatxpgrQ
 <br />
 <h2>Technology Concepts:</h2><br />
 顧客価値(UI/UX)を起点に、意思決定を行う<br />
